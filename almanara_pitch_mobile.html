@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>almanara — Mobile Commercial Strategy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#08111b; --bg2:#0b1520; --card:#111e2e; --card2:#172540; --line:rgba(255,255,255,.08); --line2:rgba(255,255,255,.14);
+  --text:#f5efe7; --muted:#8a9bb0; --soft:rgba(245,239,231,.74);
+  --orange:#e8500a; --orange2:#ff6b2b; --orangeBg:rgba(232,80,10,.1); --orangeLine:rgba(232,80,10,.28);
+  --green:#2fc47a; --greenBg:rgba(47,196,122,.12); --greenLine:rgba(47,196,122,.28);
+  --red:#d95c53; --redBg:rgba(217,92,83,.12); --redLine:rgba(217,92,83,.26);
+  --display:'Manrope',sans-serif; --body:'Inter',sans-serif; --mono:'IBM Plex Mono',monospace;
+  --radius:18px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:linear-gradient(180deg,#060d15,#08111b)}
+body{font-family:var(--body);color:var(--text);background:linear-gradient(180deg,#060d15,#08111b);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.page{max-width:430px;margin:0 auto;padding:0 16px 40px}
+.hero{position:relative;padding:22px 0 20px;overflow:hidden}
+.hero::before{content:"";position:absolute;right:-90px;top:-40px;width:220px;height:220px;border-radius:999px;background:radial-gradient(circle, rgba(232,80,10,.20) 0%, rgba(232,80,10,.05) 35%, transparent 68%)}
+.topbar{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:28px}
+.brand{display:flex;flex-direction:column;gap:4px}
+.brand .name{font-family:var(--display);font-size:22px;font-weight:800;color:var(--orange);letter-spacing:-.03em}
+.brand .sub{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--muted);text-transform:uppercase}
+.meta{font-family:var(--mono);font-size:9px;line-height:1.7;letter-spacing:.12em;text-align:right;color:var(--muted);opacity:.82}
+.eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);margin-bottom:12px}
+.hero h1{font-family:var(--display);font-size:38px;line-height:1.02;letter-spacing:-.05em;margin-bottom:14px;max-width:300px}
+.hero h1 .accent{color:var(--orange)}
+.hero p{font-size:15px;line-height:1.65;color:var(--soft);max-width:340px}
+.byline{margin-top:20px;display:flex;justify-content:space-between;align-items:flex-end;gap:16px}
+.by{font-family:var(--mono);font-size:9px;line-height:1.8;letter-spacing:.1em;color:var(--muted)}
+.badge{padding:7px 11px;border-radius:999px;background:var(--orangeBg);border:1px solid var(--orangeLine);font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--orange)}
+.section{padding:18px 0}
+.section-title{font-family:var(--display);font-size:30px;line-height:1.05;letter-spacing:-.045em;margin-bottom:10px}
+.section-title .accent{color:var(--orange)}
+.section-sub{font-size:14px;line-height:1.65;color:var(--muted);margin-bottom:16px}
+.card{background:linear-gradient(180deg,rgba(17,30,46,.98),rgba(12,22,36,.98));border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:0 8px 24px rgba(0,0,0,.18)}
+.stack{display:flex;flex-direction:column;gap:12px}
+.kpi{display:flex;flex-direction:column;gap:8px}
+.kpi .label{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--orange)}
+.kpi .value{font-family:var(--display);font-size:18px;font-weight:700;letter-spacing:-.03em}
+.kpi .desc{font-size:14px;color:var(--soft);line-height:1.6}
+.tag{display:inline-flex;align-items:center;padding:6px 10px;border-radius:999px;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase}
+.tag.red{background:var(--redBg);border:1px solid var(--redLine);color:#ff9088}
+.tag.orange{background:var(--orangeBg);border:1px solid var(--orangeLine);color:var(--orange2)}
+.tag.green{background:var(--greenBg);border:1px solid var(--greenLine);color:#6ce1a4}
+.grid-2{display:grid;grid-template-columns:1fr;gap:12px}
+.impact{padding:18px;border-radius:var(--radius);background:linear-gradient(180deg,rgba(232,80,10,.12),rgba(232,80,10,.05));border:1px solid var(--orangeLine)}
+.impact .big{font-family:var(--display);font-size:38px;font-weight:800;line-height:.94;letter-spacing:-.05em;margin:8px 0 14px}
+.impact .big span{color:var(--orange)}
+.impact p{font-size:14px;line-height:1.7;color:var(--soft)}
+.stepper{display:flex;flex-direction:column;gap:10px}
+.step{border:1px solid var(--line);border-radius:16px;padding:14px 14px 12px;background:rgba(17,30,46,.72)}
+.step-top{display:flex;justify-content:space-between;gap:10px;margin-bottom:8px}
+.step-n{font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--orange)}
+.step-name{font-family:var(--display);font-size:17px;font-weight:700;letter-spacing:-.03em}
+.state{display:grid;grid-template-columns:1fr;gap:10px;margin-top:10px}
+.state-box{border-radius:14px;padding:12px;border:1px solid}
+.state-box .label{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px}
+.state-box .copy{font-size:13.5px;line-height:1.58}
+.state-box.today{background:var(--redBg);border-color:var(--redLine)}
+.state-box.today .label{color:#ff8b84}
+.state-box.system{background:var(--greenBg);border-color:var(--greenLine)}
+.state-box.system .label{color:#72e2ab}
+.split{display:grid;grid-template-columns:1fr;gap:12px}
+.monday{padding:16px;border-radius:18px;border:1px solid var(--line)}
+.monday.today{background:linear-gradient(180deg,rgba(17,30,46,.95),rgba(17,30,46,.65))}
+.monday.future{background:linear-gradient(180deg,rgba(19,36,29,.55),rgba(17,30,46,.9));border-color:var(--greenLine)}
+.monday h3{font-family:var(--display);font-size:18px;font-weight:800;letter-spacing:-.03em;margin-bottom:12px}
+.monday ul{display:flex;flex-direction:column;gap:10px;list-style:none}
+.monday li{font-size:14px;line-height:1.58;color:var(--soft);padding-left:14px;position:relative}
+.monday li::before{content:'•';position:absolute;left:0;top:0;color:var(--orange)}
+.tool{display:flex;flex-direction:column;gap:10px;padding:16px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(180deg,rgba(17,30,46,.98),rgba(12,22,36,.98));position:relative;overflow:hidden}
+.tool::before{content:"";position:absolute;left:0;top:0;right:0;height:2px;background:linear-gradient(90deg,var(--orange),transparent 75%)}
+.tool .role{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--orange)}
+.tool .name{font-family:var(--display);font-size:20px;font-weight:800;letter-spacing:-.04em;line-height:1.08}
+.tool .price{font-family:var(--mono);font-size:28px;color:var(--orange)}
+.tool .price span{font-size:13px;color:var(--muted)}
+.tool p{font-size:14px;line-height:1.62;color:var(--soft)}
+.tool ul{list-style:none;display:flex;flex-direction:column;gap:7px}
+.tool li{font-size:13.5px;line-height:1.5;color:var(--soft);padding-left:12px;position:relative}
+.tool li::before{content:'—';position:absolute;left:0;color:var(--orange)}
+.note{padding:12px 13px;border-radius:14px;background:var(--orangeBg);border:1px solid var(--orangeLine);font-size:13px;line-height:1.58;color:var(--soft)}
+.phase{padding:16px;border:1px solid var(--line);border-radius:18px;background:rgba(17,30,46,.78)}
+.phase .tagline{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);margin-bottom:4px}
+.phase .title{font-family:var(--display);font-size:22px;font-weight:800;letter-spacing:-.04em}
+.phase .time{font-family:var(--mono);font-size:10px;color:var(--muted);margin:5px 0 12px}
+.phase ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.phase li{font-size:13.5px;line-height:1.55;color:var(--soft);padding-left:14px;position:relative}
+.phase li::before{content:'→';position:absolute;left:0;color:var(--orange);font-family:var(--mono);font-size:10px;top:2px}
+.phase .win{margin-top:12px;padding-top:12px;border-top:1px solid var(--line);font-family:var(--mono);font-size:10.5px;line-height:1.55;color:var(--orange)}
+.question{display:flex;gap:12px;padding:14px;border-radius:16px;border:1px solid var(--line);background:rgba(17,30,46,.78)}
+.question .n{font-family:var(--mono);font-size:10px;color:var(--orange);padding-top:3px}
+.question .q{font-size:14px;line-height:1.58;color:var(--text)}
+.close{padding:24px 0 32px}
+.close-box{padding:22px 18px;border-radius:22px;background:linear-gradient(180deg,rgba(17,30,46,.96),rgba(9,16,27,.96));border:1px solid var(--line2);position:relative;overflow:hidden}
+.close-box::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 85% 10%, rgba(232,80,10,.18), transparent 35%);pointer-events:none}
+.close h2{font-family:var(--display);font-size:34px;line-height:.98;letter-spacing:-.05em;margin-bottom:14px;max-width:300px;position:relative;z-index:1}
+.close h2 .accent{color:var(--orange)}
+.close p{position:relative;z-index:1;font-size:15px;line-height:1.7;color:var(--soft)}
+.next{margin-top:16px;padding:16px;border-radius:16px;border-left:3px solid var(--orange);background:rgba(255,255,255,.03);position:relative;z-index:1}
+.next .title{font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--orange);text-transform:uppercase;margin-bottom:10px}
+.next ol{list-style:none;display:flex;flex-direction:column;gap:12px}
+.next li{display:grid;grid-template-columns:24px 1fr;gap:10px}
+.next .n{font-family:var(--mono);font-size:10px;color:var(--orange);padding-top:3px}
+.next .t{font-family:var(--display);font-size:15px;font-weight:700;margin-bottom:2px}
+.next .d{font-size:13.5px;line-height:1.55;color:var(--muted)}
+.footer-note{margin-top:14px;font-family:var(--display);font-size:18px;font-weight:700;line-height:1.35}
+.sticky-cta{position:sticky;bottom:12px;z-index:20;padding-top:8px}
+.sticky-cta a{display:flex;justify-content:center;align-items:center;gap:10px;width:100%;padding:14px 16px;border-radius:16px;background:linear-gradient(90deg,var(--orange),var(--orange2));color:white;text-decoration:none;font-family:var(--display);font-size:15px;font-weight:800;letter-spacing:-.02em;box-shadow:0 14px 30px rgba(232,80,10,.22)}
+.small-note{margin-top:10px;text-align:center;font-size:11px;color:var(--muted);line-height:1.45}
+</style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <div class="topbar">
+        <div class="brand">
+          <div class="name">almanara</div>
+          <div class="sub">delivery unlimited · istanbul</div>
+        </div>
+        <div class="meta">COMMERCIAL STRATEGY REVIEW<br>CONFIDENTIAL · MARCH 2026<br>PREPARED FOR: CEO / OWNER</div>
+      </div>
+      <div class="eyebrow">Revenue Operations Assessment</div>
+      <h1>Strong operations. <span class="accent">Missed revenue.</span></h1>
+      <p>A clear view of where revenue is leaking — and how to fix it fast.</p>
+      <div class="byline">
+        <div class="by">PREPARED BY: CHARBEL<br>COMMERCIAL OPERATIONS CONSULTANT</div>
+        <div class="badge">MARCH 2026</div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="eyebrow">Initial Diagnosis</div>
+      <h2 class="section-title">What I suspect are four gaps. <span class="accent">All structural. All fixable.</span></h2>
+      <p class="section-sub">These are working hypotheses for discussion, not assumptions presented as facts.</p>
+      <div class="stack">
+        <div class="card kpi">
+          <div class="label">01 — Visibility</div>
+          <div class="value">Low pipeline visibility</div>
+          <div class="desc">Pipeline likely lives across Excel, inboxes, and WhatsApp. Real-time visibility is low. Forecast accuracy is likely under 50%.</div>
+          <span class="tag red">High impact</span>
+        </div>
+        <div class="card kpi">
+          <div class="label">02 — Process</div>
+          <div class="value">Execution depends on reps</div>
+          <div class="desc">Core steps likely depend on memory, not systems. Follow-up is inconsistent. Momentum loss could easily be costing 15–25% of active opportunities.</div>
+          <span class="tag red">Revenue risk</span>
+        </div>
+        <div class="card kpi">
+          <div class="label">03 — Outreach</div>
+          <div class="value">Prospecting is uneven</div>
+          <div class="desc">Outreach appears manual and inconsistent. Response times vary. New pipeline creation depends on who has time, not on a repeatable commercial engine.</div>
+          <span class="tag orange">Growth blocker</span>
+        </div>
+        <div class="card kpi">
+          <div class="label">04 — Learning Loop</div>
+          <div class="value">Loss reasons are not usable</div>
+          <div class="desc">Wins and losses are likely not captured in a structured way. That means no reliable feedback loop to improve targeting, follow-up, or conversion over time.</div>
+          <span class="tag red">Control gap</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="eyebrow">Where Revenue Exits</div>
+      <h2 class="section-title">The commercial engine — <span class="accent">today vs. with system.</span></h2>
+      <p class="section-sub">This is not about tools. It’s about control.</p>
+      <div class="stepper">
+        <div class="step">
+          <div class="step-top"><div><div class="step-n">01</div><div class="step-name">Lead generation</div></div></div>
+          <div class="state">
+            <div class="state-box today"><div class="label">Today</div><div class="copy">Scattered sources. No consistent tracking. Lead quality unclear.</div></div>
+            <div class="state-box system"><div class="label">With system</div><div class="copy">Central capture. Source tracked. Lead quality measurable.</div></div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-top"><div><div class="step-n">02</div><div class="step-name">Enrichment & qualification</div></div></div>
+          <div class="state">
+            <div class="state-box today"><div class="label">Today</div><div class="copy">Manual research. Inconsistent targeting. Qualification depends on rep effort.</div></div>
+            <div class="state-box system"><div class="label">With system</div><div class="copy">Auto-enriched data. Faster qualification. Clear ICP scoring.</div></div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-top"><div><div class="step-n">03</div><div class="step-name">CRM structure</div></div></div>
+          <div class="state">
+            <div class="state-box today"><div class="label">Today</div><div class="copy">Contacts incomplete. Companies disconnected. No clean associations. Low visibility.</div></div>
+            <div class="state-box system"><div class="label">With system</div><div class="copy">Clean records. Proper company-contact-deal associations. Full visibility.</div></div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-top"><div><div class="step-n">04</div><div class="step-name">Outreach</div></div></div>
+          <div class="state">
+            <div class="state-box today"><div class="label">Today</div><div class="copy">Manual outreach. No standard cadence. Execution quality varies by rep.</div></div>
+            <div class="state-box system"><div class="label">With system</div><div class="copy">Structured sequences. Consistent timing. Better coverage with a smaller team.</div></div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-top"><div><div class="step-n">05</div><div class="step-name">Quote</div></div></div>
+          <div class="state">
+            <div class="state-box today"><div class="label">Today</div><div class="copy">Quotes are sent without clean tracking. Engagement after sending is unclear.</div></div>
+            <div class="state-box system"><div class="label">With system</div><div class="copy">Quote stage tracked. Commercial activity logged. Better visibility after send.</div></div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-top"><div><div class="step-n">06</div><div class="step-name">Follow-up</div></div></div>
+          <div class="state">
+            <div class="state-box today"><div class="label">Today</div><div class="copy">Momentum depends on rep memory. Deals go cold. Silence is misread as lost interest.</div></div>
+            <div class="state-box system"><div class="label">With system</div><div class="copy">Follow-ups are automated. Sequences keep opportunities moving without relying on reminders.</div></div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-top"><div><div class="step-n">07</div><div class="step-name">Decision</div></div></div>
+          <div class="state">
+            <div class="state-box today"><div class="label">Today</div><div class="copy">Wins and losses are visible late — if at all. Reasons are not structured.</div></div>
+            <div class="state-box system"><div class="label">With system</div><div class="copy">Structured outcomes. Clear win/loss patterns. Better forecasting and learning.</div></div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-top"><div><div class="step-n">08</div><div class="step-name">Nurture</div></div></div>
+          <div class="state">
+            <div class="state-box today"><div class="label">Today</div><div class="copy">Lost leads are forgotten. No reactivation logic. Pipeline must be rebuilt manually.</div></div>
+            <div class="state-box system"><div class="label">With system</div><div class="copy">Automated nurture. Re-engagement becomes systematic. Pipeline stays active over time.</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="eyebrow">The Vision</div>
+      <h2 class="section-title">Two <span class="accent">Mondays.</span></h2>
+      <div class="split">
+        <div class="monday today">
+          <h3>Monday morning — today</h3>
+          <ul>
+            <li>“How did last week go?” — I am asking a rep because I cannot see it directly.</li>
+            <li>“I think the pipeline is healthy.” — I have no consistent way to verify that.</li>
+            <li>A quote went out last week. I do not know whether follow-up happened.</li>
+            <li>We lost a deal last month. I still do not know why it was lost.</li>
+            <li>There are probably leads sitting untouched. I cannot surface them in minutes.</li>
+          </ul>
+        </div>
+        <div class="monday future">
+          <h3>Monday morning — 12 weeks from now</h3>
+          <ul>
+            <li>I open my phone. Pipeline value. Deals closing. Deals at risk.</li>
+            <li>Every rep’s activity is visible. Follow-up is automated.</li>
+            <li>Lost deals are logged with reasons. Priorities for the week are clear.</li>
+            <li>New prospects are entering the pipeline through a repeatable process.</li>
+            <li>The commercial side is no longer dependent on memory and guesswork.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="eyebrow">Financial Framing</div>
+      <h2 class="section-title">What this means <span class="accent">financially.</span></h2>
+      <div class="grid-2">
+        <div class="card stack">
+          <div class="kpi"><div class="label">Conversion</div><div class="value">+15–20%</div><div class="desc">Pipeline visibility alone can improve how opportunities are managed and closed.</div></div>
+          <div class="kpi"><div class="label">Win rate</div><div class="value">+10–15%</div><div class="desc">Automated follow-up protects active deals from going cold too early.</div></div>
+          <div class="kpi"><div class="label">Speed</div><div class="value">+8–12%</div><div class="desc">Faster response and cleaner handoff improve momentum across the pipeline.</div></div>
+          <div class="kpi"><div class="label">Planning</div><div class="value">Stronger control</div><div class="desc">Better forecast visibility improves staffing, focus, and commercial decision-making.</div></div>
+        </div>
+        <div class="impact">
+          <div class="eyebrow" style="margin-bottom:4px">Bottom line</div>
+          <div class="big">+20–30% <span>revenue</span></div>
+          <p>Realistically, this is the kind of improvement a business can target when the commercial engine becomes structured — without having to scale headcount first.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="eyebrow">Phase 1 — Foundation Stack</div>
+      <h2 class="section-title">Lean stack. <span class="accent">Fast adoption.</span></h2>
+      <p class="section-sub">Built for speed: predictable pipeline, cleaner execution, fast adoption.</p>
+      <div class="stack">
+        <div class="tool">
+          <div class="role">01 — Core CRM</div>
+          <div class="name">HubSpot Sales Hub Professional</div>
+          <div class="price">$400 <span>/ month</span></div>
+          <p>Single source of truth for contacts, companies, deals, stages, follow-up logic, and reporting.</p>
+          <ul>
+            <li>4 seats configured for the current team</li>
+            <li>Proper company/contact/deal associations</li>
+            <li>Sequences, workflows, reporting</li>
+            <li>Owner visibility across pipeline and rep activity</li>
+          </ul>
+        </div>
+        <div class="tool">
+          <div class="role">02 — Prospecting</div>
+          <div class="name">LinkedIn Sales Navigator</div>
+          <div class="price">$100 <span>/ month · shared</span></div>
+          <p>Primary outbound engine for account discovery and structured prospecting.</p>
+          <ul>
+            <li>Build targeted account lists</li>
+            <li>Identify decision-makers quickly</li>
+            <li>Consistent weekly prospecting volume</li>
+            <li>Matches a relationship-driven sales motion</li>
+          </ul>
+        </div>
+        <div class="tool">
+          <div class="role">03 — Enrichment</div>
+          <div class="name">Lusha</div>
+          <div class="price">$400 <span>/ month</span></div>
+          <p>Fast enrichment layer for direct contact details and outreach readiness.</p>
+          <ul>
+            <li>Direct dials and verified emails</li>
+            <li>Clean enrichment workflow</li>
+            <li>Faster rep execution</li>
+            <li>Strong ROI for outbound-heavy teams</li>
+          </ul>
+        </div>
+        <div class="tool">
+          <div class="role">04 — Outreach</div>
+          <div class="name">HubSpot Sequences</div>
+          <div class="price">Included <span>in HubSpot</span></div>
+          <p>Structured outreach and follow-up from one system.</p>
+          <ul>
+            <li>Automated follow-up from rep inbox</li>
+            <li>Consistent timing across team</li>
+            <li>Keeps stack simple and unified</li>
+            <li>Enough for current scale</li>
+          </ul>
+        </div>
+        <div class="impact">
+          <div class="eyebrow" style="margin-bottom:4px">Lean setup</div>
+          <div class="big" style="font-size:34px">~$900 <span>/ month</span></div>
+          <p>HubSpot + Sales Nav + Lusha. Enough to standardize outbound, fix CRM discipline, and build predictable pipeline quickly.</p>
+        </div>
+        <div class="note">Clay can be introduced later once outbound volume and workflows mature.</div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="eyebrow">Implementation Roadmap</div>
+      <h2 class="section-title">Three phases. <span class="accent">One direction.</span></h2>
+      <div class="stack">
+        <div class="phase">
+          <div class="tagline">Phase 01</div>
+          <div class="title">Foundation</div>
+          <div class="time">Weeks 1–6</div>
+          <ul>
+            <li>HubSpot configured — pipelines, stages, properties</li>
+            <li>Data cleaned and structured from current sources</li>
+            <li>Team trained on real process, not theory</li>
+            <li>Inbound capture and rep assignment activated</li>
+            <li>First outreach and follow-up sequences live</li>
+            <li>Owner dashboard built and active</li>
+          </ul>
+          <div class="win">Day 30: pipeline visible, no inbound lead left unanswered.</div>
+        </div>
+        <div class="phase">
+          <div class="tagline">Phase 02</div>
+          <div class="title">Activation</div>
+          <div class="time">Weeks 7–12</div>
+          <ul>
+            <li>Sales Navigator searches defined by target segment</li>
+            <li>Lusha connected for enrichment and CRM push</li>
+            <li>Outbound sequences launched by segment</li>
+            <li>Deal stage logic and stuck-deal flags activated</li>
+            <li>Lead assignment rules standardized</li>
+            <li>Rep activity dashboard completed</li>
+          </ul>
+          <div class="win">Day 60: outbound running, new prospects entering consistently.</div>
+        </div>
+        <div class="phase">
+          <div class="tagline">Phase 03</div>
+          <div class="title">Optimize</div>
+          <div class="time">Month 4+</div>
+          <ul>
+            <li>Forecasting based on real pipeline data</li>
+            <li>Win/loss analysis made usable</li>
+            <li>Sequence performance reviewed and improved</li>
+            <li>ICP refined using actual conversion patterns</li>
+            <li>Commercial review rhythm established</li>
+          </ul>
+          <div class="win">Month 4+: the system starts compounding, not just functioning.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="eyebrow">A Conversation</div>
+      <h2 class="section-title">What I’d want to <span class="accent">understand from you.</span></h2>
+      <div class="stack">
+        <div class="question"><div class="n">01</div><div class="q">How are you currently managing your sales pipeline day to day?</div></div>
+        <div class="question"><div class="n">02</div><div class="q">When a new commercial lead comes in, what exactly happens — who handles it, how fast, and where does it go?</div></div>
+        <div class="question"><div class="n">03</div><div class="q">How often do you feel you have a real picture of what is coming commercially next month or next quarter?</div></div>
+        <div class="question"><div class="n">04</div><div class="q">What is your biggest commercial concern right now, if you say it very directly?</div></div>
+        <div class="question"><div class="n">05</div><div class="q">What would make you confident that this is the right move for Almanara now?</div></div>
+      </div>
+    </section>
+
+    <section class="close">
+      <div class="close-box">
+        <div class="eyebrow">The Opportunity</div>
+        <h2>Almanara has everything it needs. <span class="accent">What’s missing</span> is the most fixable thing.</h2>
+        <p>The market is there. The team is there. The operational credibility is there. What’s missing is commercial infrastructure — and that is entirely fixable.</p>
+        <div class="next">
+          <div class="title">What happens next</div>
+          <ol>
+            <li><div class="n">01</div><div><div class="t">Deep discovery session</div><div class="d">60 minutes focused on your systems, pipeline, and workflow.</div></div></li>
+            <li><div class="n">02</div><div><div class="t">Commercial infrastructure audit</div><div class="d">Clear gaps, clear priorities, no assumptions.</div></div></li>
+            <li><div class="n">03</div><div><div class="t">Build roadmap presentation</div><div class="d">Practical, fast, realistic — then we decide together if we move forward.</div></div></li>
+          </ol>
+          <div class="footer-note">Not a generic template. Something built exactly for Almanara.</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="sticky-cta">
+      <a href="#top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Back to top</a>
+      <div class="small-note">Mobile-first version built specifically for phone viewing and WhatsApp sharing.</div>
+    </div>
+  </main>
+</body>
+</html>
